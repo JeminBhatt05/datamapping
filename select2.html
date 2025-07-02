@@ -1,0 +1,63 @@
+<html>
+    <body>
+        <form id="selectionForm" action="{{ url_for('submit_selection') }}" method="POST" onsubmit="return validateSelection()">
+            id:
+            <select name="selected_item" id="selected_item">
+                {% for item in items %}
+                <option value="{{ item }}" {% if item == selected_value %}disabled{% endif %}>{{ item }}</option>
+                {% endfor %}
+            </select><input type="checkbox" id="item1" name="item1" value="selected_item">Set Unique
+            <br>
+            
+            name:
+            <select name="selected_item1" id="selected_item1">
+                {% for item in items %}
+                <option value="{{ item }}" {% if item == selected_value %}disabled{% endif %}>{{ item }}</option>
+                {% endfor %}
+            </select><input type="checkbox" id="item2" name="item2" value="selected_item1">Set Unique
+            <br>
+    
+            mn:
+            <select name="selected_item2" id="selected_item2">
+                {% for item in items %}
+                <option value="{{ item }}" {% if item == selected_value %}disabled{% endif %}>{{ item }}</option>
+                {% endfor %}
+            </select><input type="checkbox" id="item3" name="item3" value="selected_item2">Set Unique<br>
+    
+            language:
+            <select name="selected_item3" id="selected_item3">
+                {% for item in items %}
+                <option value="{{ item }}" {% if item == selected_value %}disabled{% endif %}>{{ item }}</option>
+                {% endfor %}
+            </select><input type="checkbox" id="item4" name="item4" value="selected_item3">Set Unique<br>
+    
+            gender:
+            <select name="selected_item4" id="selected_item4">
+                {% for item in items %}
+                <option value="{{ item }}" {% if item == selected_value %}disabled{% endif %}>{{ item }}</option>
+                {% endfor %}
+            </select><input type="checkbox" id="item5" name="item5" value="selected_item4">Set Unique<br>
+    
+            <button type="submit" value="submit">Submit</button>   
+        </form>
+        <script type="text/javascript">
+            function validateSelection() {
+                const selectedValue = document.getElementById("selected_item").value;
+                const selectedValue1 = document.getElementById("selected_item1").value;
+                const selectedValue2 = document.getElementById("selected_item2").value;
+                const selectedValue3 = document.getElementById("selected_item3").value;
+                const selectedValue4 = document.getElementById("selected_item4").value;
+    
+                const selectedValues = [selectedValue, selectedValue1, selectedValue2, selectedValue3, selectedValue4];
+                const hasDuplicates = new Set(selectedValues).size !== selectedValues.length;
+    
+                if (hasDuplicates) {
+                    alert("Please select different values for each field.");
+                    return false; //form submission nai tahava dei
+                }
+    
+                return true; //for form submission
+            }
+        </script>
+    </body>
+</html>
