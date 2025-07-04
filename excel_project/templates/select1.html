@@ -1,0 +1,19 @@
+{%load static%}
+<!DOCTYPE html>
+<html>
+    
+<head> 
+    <title>Upload Excel</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+    {% if error %}<p style="color:red">{{ error }}</p>{% endif %}
+    <h2>Upload Excel File</h2><br>
+    
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Upload</button>
+    </form>
+</body>
+</html>
